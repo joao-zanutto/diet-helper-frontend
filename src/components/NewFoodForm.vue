@@ -2,14 +2,15 @@
   <div>
     <form>
         <h1> Adicionar uma nova comida</h1>
-        <input type="text" class="form-control" v-model="foodName" placeholder="Nome da Comida">
-        <input type="text" class="form-control" v-model="carboCount" placeholder="g de carbo por 100g de alimento">
-        <input type="text" class="form-control" v-model="protCount" placeholder="g de proteínas por 100g de alimento">
-        <input type="text" class="form-control" v-model="fatCount" placeholder="g de gordura por 100g de alimento">
-        <button class="btn btn-primary"> Criar Alimento </button>
+        <input type="text" class="form-control shadow-sm" v-model="foodName" placeholder="Nome da Comida">
+        <input type="text" class="form-control shadow-sm" v-model="quantity" placeholder="Quantidade da comida (un, 100g)">
+        <input type="text" class="form-control shadow-sm" v-model="carboCount" placeholder="g de carbo por 100g de alimento">
+        <input type="text" class="form-control shadow-sm" v-model="protCount" placeholder="g de proteínas por 100g de alimento">
+        <input type="text" class="form-control shadow-sm" v-model="fatCount" placeholder="g de gordura por 100g de alimento">
+        <button class="btn btn-primary shadow-sm"> Criar Alimento </button>
     </form>
     <div class="stats">
-      <h3>{{ caloriesCount }} kcal por 100g de {{ foodName }}</h3>
+      <h3>{{ caloriesCount }} kcal por {{ quantity }} de {{ foodName }}</h3>
       <p> Peso em Macros: {{ totalWeigth }}g</p>
       <p> Carboidratos: {{ carboPercent }}%</p>
       <p> Proteinas: {{ protPercent }}%</p>
@@ -25,6 +26,7 @@ export default {
   },
   data: function(){
     return {
+      quantity: "",
       foodName: "",
       carboCount: "",
       protCount: "",
@@ -33,7 +35,7 @@ export default {
   },
   methods: {
     addFoodItem: function(){
-      
+
     }
   },
   computed: {
@@ -75,6 +77,7 @@ a {
 form{
   text-align: left;
   margin: 20px;
+  margin-top: 0px;
 }
 input{
   margin-top: 10px;
