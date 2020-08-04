@@ -31,6 +31,11 @@ export default {
       fatCount: "",
     }
   },
+  methods: {
+    addFoodItem: function(){
+      
+    }
+  },
   computed: {
     caloriesCount: function(){
       return 4*Number(this.carboCount) + 4*Number(this.protCount) + 9*Number(this.fatCount)
@@ -70,9 +75,6 @@ a {
 form{
   text-align: left;
   margin: 20px;
-}
-h1{
-  margin-bottom: 100px;
 }
 input{
   margin-top: 10px;
