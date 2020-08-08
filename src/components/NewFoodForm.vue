@@ -4,17 +4,20 @@
         <h1> Adicionar uma nova comida</h1>
         <input type="text" class="form-control shadow-sm" v-model="foodName" placeholder="Nome da Comida">
         <input type="text" class="form-control shadow-sm" v-model="quantity" placeholder="Quantidade da comida (un, 100g)">
-        <input type="text" class="form-control shadow-sm" v-model="carboCount" placeholder="g de carbo por 100g de alimento">
-        <input type="text" class="form-control shadow-sm" v-model="protCount" placeholder="g de proteínas por 100g de alimento">
-        <input type="text" class="form-control shadow-sm" v-model="fatCount" placeholder="g de gordura por 100g de alimento">
+        <input type="number" class="form-control shadow-sm" v-model="carboCount" placeholder="g de carbo por 100g de alimento">
+        <input type="number" class="form-control shadow-sm" v-model="protCount" placeholder="g de proteínas por 100g de alimento">
+        <input type="number" class="form-control shadow-sm" v-model="fatCount" placeholder="g de gordura por 100g de alimento">
         <button class="btn btn-primary shadow-sm"> Criar Alimento </button>
     </form>
     <div class="stats">
       <h3>{{ caloriesCount }} kcal por {{ quantity }} de {{ foodName }}</h3>
       <p> Peso em Macros: {{ totalWeigth }}g</p>
-      <p> Carboidratos: {{ carboPercent }}%</p>
-      <p> Proteinas: {{ protPercent }}%</p>
-      <p> Gorduras: {{ fatPercent }}%</p>
+      <p v-if="!isNaN(carboPercent)"> Carboidratos: {{ carboPercent }}%</p>
+      <p v-else> Carboidratos: 0%</p>
+      <p v-if="!isNaN(protPercent)"> Proteinas: {{ protPercent }}%</p>
+      <p v-else> Proteinas: 0%</p>
+      <p v-if="!isNaN(fatPercent)"> Gorduras: {{ fatPercent }}%</p>
+      <p v-else> Gorduras: 0%</p>
     </div>
   </div>
 </template>
