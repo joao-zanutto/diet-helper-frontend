@@ -1,9 +1,8 @@
 <template>
     <div id="catalogue">
-        <button class="btn btn-primary" @click="fetchFoods"> Atualizar</button>
         <h1>Catalogo de Comidas</h1>
-        <div class="row">
-            <FoodCatalogueCard v-for="food in foodList" :key="food" :food="food"/>
+        <div class="row catalogue">
+            <FoodCatalogueCard @deleted="fetchFoods" class="foodElement shadow-sm" v-for="food in foodList" :key="food._id" :food="food" />
         </div>
     </div>
 </template>
@@ -31,18 +30,23 @@ export default {
             })
         }
     },
+    created (){
+        this.fetchFoods();
+    }
 }
 </script>
 
 <style>
 #catalogue{
     text-align: left;
-    margin: 20px;
-    margin-top: 0px;
 }
 
-p{
-    padding: 0px;
-    margin: 0px;
+.catalogue{
+    margin-left: 50%;
+}
+
+.foodElement{
+    margin-left: 10px;
+    margin-top: 10px;
 }
 </style>

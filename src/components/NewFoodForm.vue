@@ -2,12 +2,14 @@
   <div>
     <form>
         <h1> Adicionar uma nova comida</h1>
-        <input type="text" class="form-control shadow-sm" v-model="foodName" placeholder="Nome da Comida">
-        <input type="text" class="form-control shadow-sm" v-model="quantity" placeholder="Quantidade da comida (un, 100g)">
-        <input type="number" class="form-control shadow-sm" v-model="carboCount" placeholder="g de carbo por 100g de alimento">
-        <input type="number" class="form-control shadow-sm" v-model="protCount" placeholder="g de proteínas por 100g de alimento">
-        <input type="number" class="form-control shadow-sm" v-model="fatCount" placeholder="g de gordura por 100g de alimento">
-        <button class="btn btn-primary shadow-sm"> Criar Alimento </button>
+        <form>
+          <input type="text" class="form-control shadow-sm" v-model="foodName" placeholder="Nome da Comida">
+          <input type="text" class="form-control shadow-sm" v-model="quantity" placeholder="Quantidade da comida (un, 100g)">
+          <input type="number" class="form-control shadow-sm" v-model="carboCount" placeholder="g de carbo por 100g de alimento">
+          <input type="number" class="form-control shadow-sm" v-model="protCount" placeholder="g de proteínas por 100g de alimento">
+          <input type="number" class="form-control shadow-sm" v-model="fatCount" placeholder="g de gordura por 100g de alimento">
+          <button type="button" class="btn btn-primary shadow-sm" @click="addFoodItem"> Criar Alimento </button>
+        </form>
     </form>
     <div class="stats">
       <h3>{{ caloriesCount }} kcal por {{ quantity }} de {{ foodName }}</h3>
@@ -38,7 +40,28 @@ export default {
   },
   methods: {
     addFoodItem: function(){
+      var data = {
+        name: this.foodName,
+        quanti: this.quantity,
+        carboCount: this.carboCount,
+        protCount: this.protCount,
+        fatCount: this.fatCount
+      }
 
+      fetch('http://localhost:3000/foods', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
     }
   },
   computed: {
@@ -63,24 +86,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
 a {
   color: #42b983;
 }
 form{
   text-align: left;
-  margin: 20px;
-  margin-top: 0px;
 }
 input{
   margin-top: 10px;
@@ -88,6 +98,6 @@ input{
 }
 .stats{
   text-align: left;
-  margin-left: 20px;
+  margin-top: 40px;
 }
 </style>

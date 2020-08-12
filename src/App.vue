@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div>
-      <div class="row head shadow-sm rouded fixed-bottom">
+      <div class="row head shadow-sm rouded">
         <p class="col-md-4"><router-link to="/" class="nav-link shadow">Nova Comida</router-link></p>
         <p class="col-md-4"><router-link to="/catalogue" class="nav-link shadow">Catálogo de Comidas</router-link></p>
         <p class="col-md-4"><router-link to="/diary" class="nav-link shadow">Diário</router-link></p>
@@ -45,8 +45,7 @@ export default {
 }
 
 .head{
-  border-top: black 1px solid;
-  padding-top: 20px;
+  border-bottom: black 1px solid;
 }
 
 .nav-link{
@@ -60,5 +59,9 @@ export default {
 .nav-link:hover{
   color: white;
 
+}
+
+.view{
+  margin: 20px;
 }
 </style>
