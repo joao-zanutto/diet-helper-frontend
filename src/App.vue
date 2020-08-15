@@ -14,14 +14,17 @@
 <script>
 import NewFoodForm from './components/NewFoodForm.vue'
 import FoodCatalogue from './components/FoodCatalogue.vue'
+import Diary from './components/Diary.vue'
 import VueRouter from 'vue-router'
+
 
 const router = new VueRouter({
   mode: 'history',
   base: __dirname,
   routes: [
     { path: '/', component: NewFoodForm },
-    { path: '/catalogue', component: FoodCatalogue }
+    { path: '/catalogue', component: FoodCatalogue },
+    { path: '/diary', component: Diary }
   ]
 });
 

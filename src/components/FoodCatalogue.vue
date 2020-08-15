@@ -13,7 +13,7 @@ import FoodCatalogueCard from './FoodCatalogueCard'
 export default {
     name: 'FoodCatalogue',
     components: {
-        FoodCatalogueCard
+        FoodCatalogueCard,
     },
     data: function (){
         return {
@@ -28,7 +28,7 @@ export default {
             .catch(function (error) {
                 alert(error);
             })
-        }
+        },
     },
     created (){
         this.fetchFoods();

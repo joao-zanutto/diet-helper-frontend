@@ -2,14 +2,13 @@
   <div>
     <form>
         <h1> Adicionar uma nova comida</h1>
-        <form>
-          <input type="text" class="form-control shadow-sm" v-model="foodName" placeholder="Nome da Comida">
-          <input type="text" class="form-control shadow-sm" v-model="quantity" placeholder="Quantidade da comida (un, 100g)">
-          <input type="number" class="form-control shadow-sm" v-model="carboCount" placeholder="g de carbo por 100g de alimento">
-          <input type="number" class="form-control shadow-sm" v-model="protCount" placeholder="g de proteínas por 100g de alimento">
-          <input type="number" class="form-control shadow-sm" v-model="fatCount" placeholder="g de gordura por 100g de alimento">
-          <button type="button" class="btn btn-primary shadow-sm" @click="addFoodItem"> Criar Alimento </button>
-        </form>
+        <input type="text" class="form-control shadow-sm" v-model="foodName" placeholder="Nome da Comida">
+        <input type="text" class="form-control shadow-sm" v-model="quantity" placeholder="Quantidade da comida (un, 100g)">
+        <input type="number" class="form-control shadow-sm" v-model="carboCount" placeholder="g de carbo por 100g de alimento">
+        <input type="number" class="form-control shadow-sm" v-model="protCount" placeholder="g de proteínas por 100g de alimento">
+        <input type="number" class="form-control shadow-sm" v-model="fatCount" placeholder="g de gordura por 100g de alimento">
+        <button type="button" class="btn btn-primary shadow-sm" @click="addFoodItem"> Criar Alimento </button>
+        <button type="button" class="btn btn-danger shadow-sm"> Cancelar </button>
     </form>
     <div class="stats">
       <h3>{{ caloriesCount }} kcal por {{ quantity }} de {{ foodName }}</h3>
@@ -80,15 +79,12 @@ export default {
     fatPercent: function(){
       return ((Number(this.fatCount) / this.totalWeigth) * 100).toFixed(2)
     }
-  }
+  },
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-a {
-  color: #42b983;
-}
 form{
   text-align: left;
 }
